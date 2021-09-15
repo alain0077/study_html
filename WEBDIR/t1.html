@@ -1,0 +1,25 @@
+<HTML>
+    <HEAD>
+    	<TITLE>文書内記述</TITLE>
+        	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+    		<LINK REL="stylesheet" TYPE="text/css" HREF="../../master.css">
+	</HEAD>
+	<BODY CLASS="white">
+		<H1 CLASS="center">文書内記述</H1>
+		<SCRIPT TYPE="text/javascript">
+			document.write("JavaScript によって出力<BR>\n");
+			alert("文書内記述");
+    		var w = window.open("", "", "width=300, height=100");
+        	w.document.open();   // 以下，生成された Window 内に記述される
+        	w.document.write('<HTML>\n');
+        	w.document.write('	<HEAD>\n');
+        	w.document.write('		<TITLE>新しい Window</TITLE>\n');
+        	w.document.write('	</HEAD>\n');
+        	w.document.write('	<BODY>\n');
+        	w.document.write('		新しい Window の生成も可能<BR>\n');
+        	w.document.write('	</BODY>\n');
+        	w.document.write('</HTML>\n');
+        	w.document.close();
+      	</SCRIPT>
+    </BODY>
+</HTML>

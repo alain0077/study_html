@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>
+        Register
+    </title>
+
+    <script type="text/javascript">
+      function check(){
+          if (register.username.value == ""){
+            error_username.innerHTML = "Username is required";
+            error_password.innerHTML = "";
+
+            if(register.password.value == ""){
+              error_password.innerHTML = "Password is required";
+            }
+
+            var myfunc = function(){
+              window.location.reload();
+            }
+
+            return false;
+          }
+          
+          if (register.password.value == ""){
+            error_username.innerHTML = "";
+            error_password.innerHTML = "Password is required";
+            
+            var myfunc = function(){
+              window.location.reload();
+            }
+
+            return false;
+          }
+
+          if (register.retype_password.value != register.password.value){
+            error_username.innerHTML = "";
+            error_password.innerHTML = "";
+            error_retype_password.innerHTML = "Retype password and Password do not match!";
+            
+            var myfunc = function(){
+              window.location.reload();
+            }
+
+            return false;
+          }else{
+            return true;
+          }
+      }
+
+      function error_check(){
+        try {
+
+          var query = location.href.split('=');
+          
+          console.log(query);
+
+          if(query[1] == 'True'){
+            error_used.innerHTML = "The Username has already been taken."; 
+          }
+          else{
+            error_used.innerHTML = "";
+          }
+        }
+        catch {
+          error_used.innerHTML = "";
+        }
+      }
+   </script>
+  </head>
+
+  <body onload="error_check();">
+    <h3>Register</h3>
+
+    <font size="2">
+      <p id=error_username> </p>
+      <p id=error_password> </p>
+      <p id=error_retype_password> </p>
+      <p id=error_used> </p>
+    </font>
+
+    <font size="2">
+        <a href="login.html">
+            →Login is here
+        </a>
+    </font>
+
+    <form name="register" action="/cgi-bin/booklist_register.py" method="POST">
+        <table>
+            <tr>
+              <td>
+                Username:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <input type="text" name="username"/>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                Password:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="password"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Retype your password:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="retype_password"/>
+              </td>
+            </tr>
+        </table>
+        <input type="submit" name="submit" value="Register" style="position: relative; left: 0px; top: 10px;" onclick="return check()"/>
+    </form>
+  </body>
+</html>
