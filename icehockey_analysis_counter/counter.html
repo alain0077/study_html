@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>icehockey analysis counter</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <style>
+        .wrapper {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 960px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .wrap {
+            display: inline-block;
+            text-align: center;
+            width: auto;
+            height: auto;
+        }
+        .type {
+            display: flex;
+            flex-flow: column;
+        }
+        .dl {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>icehockey analysis counter</h1>
+        <div class="type">
+            <h2> Break Out </h2>
+            <div class="wrap">
+                <div>
+                    <table cellpadding="6">
+                        <tr>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Success
+                            </th>
+                            <th></th>
+                            <th>
+                                Failure
+                            </th>
+                            <th></th>
+                        <tr>
+                            <td>
+                                <div id='BO_cnter'>0</div>
+                            </td>
+                            <td>
+                                <div id='BO_suc_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('BO_suc_cnter')">
+                                <input type="button" value="down" onclick="DownClick('BO_suc_cnter')">
+                            </td>
+                            <td>
+                                <div id='BO_fail_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('BO_fail_cnter')">
+                                <input type="button" value="down" onclick="DownClick('BO_fail_cnter')">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table cellpadding="6">
+                        <tr>
+                            <th>
+                                BO Result
+                            </th>
+                            <th>
+                                Time
+                            </th>
+                            <th>
+                                comment
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id='BO_result'>0</div>
+                            </td>
+                            <td>
+                                <input type="text" size="4" id="BO_time">
+                            </td>
+                            <td>
+                                <textarea id="BO_come" rows="3" cols="30"></textarea>
+                            </td>
+                            <td>
+                                <input type="button" value="register" onclick="RegisterClick('BO_time','BO_come')">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h2> Turn Over </h2>
+            <div class="wrap">
+                <div>
+                    <table cellpadding="6">
+                        <tr>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Success
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                                Failure
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                                Without Shot
+                            </th>
+                            <th></th>
+                        <tr>
+                            <td>
+                                <div id='TO_cnter'>0</div>
+                            </td>
+                            <td>
+                                <div id='TO_suc_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('TO_suc_cnter')">
+                                <input type="button" value="down" onclick="DownClick('TO_suc_cnter')">
+                            </td>
+                            <td>
+                                <div id='TO_fail_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('TO_fail_cnter')">
+                                <input type="button" value="down" onclick="DownClick('TO_fail_cnter')">
+                            </td>
+                            <td>
+                                <div id='Shot_With_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('Shot_With_cnter')">
+                                <input type="button" value="down" onclick="DownClick('Shot_With_cnter')">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table cellpadding="6">
+                        <tr>
+                            <th>
+                                TO Result
+                            </th>
+                            <th>
+                                Without Shot
+                            </th>
+                            <th>
+                                Time
+                            </th>
+                            <th>
+                                comment
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id='TO_result'>0</div>
+                            </td>
+                            <td>
+                                <div id='Without_Shot'>0</div>
+                            </td>
+                            <td>
+                                <input type="text" size="4" id="TO_time">
+                            </td>
+                            <td>
+                                <textarea id="TO_come" rows="3" cols="30"></textarea>
+                            </td>
+                            <td>
+                                <input type="button" value="register" onclick="RegisterClick('TO_time', 'TO_come')">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <h2> Shot </h2>
+            <div class="wrap">
+                <div>
+                    <table cellpadding="6">
+                        <tr>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Goal
+                            </th>
+                            <th></th>
+                            <th>
+                                On
+                            </th>
+                            <th></th>
+                            <th>
+                                Off
+                            </th>
+                            <th></th>
+                        <tr>
+                            <td>
+                                <div id='Shot_cnter'>0</div>
+                            </td>
+                            <td>
+                                <div id='Shot_G_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('Shot_G_cnter')">
+                                <input type="button" value="down" onclick="DownClick('Shot_G_cnter')">
+                            </td>
+                            <td>
+                                <div id='Shot_On_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('Shot_On_cnter')">
+                                <input type="button" value="down" onclick="DownClick('Shot_On_cnter')">
+                            </td>
+                            </td>
+                            <td>
+                                <div id='Shot_Off_cnter'>0</div>
+                            </td>
+                            <td>
+                                <input type="button" value="up" onclick="UpClick('Shot_Off_cnter')">
+                                <input type="button" value="down" onclick="DownClick('Shot_Off_cnter')">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table cellpadding="6">
+                       
+                </div>
+                <div>
+                    <table cellpadding="6">
+                        <tr>
+                            <th>
+                                Ratio in Off
+                            </th>
+                            <th>
+                                Time
+                            </th>
+                            <th>
+                                comment
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id='Shot_result'>0</div>
+                            </td>
+                            <td>
+                                <input type="text" size="4" id="Shot_time">
+                            </td>
+                            <td>
+                                <textarea id="Shot_come" rows="3" cols="30"></textarea>
+                            </td>
+                            <td>
+                                <input type="button" value="register" onclick="RegisterClick('Shot_time', 'Shot_come')">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <h2> Download Results </h2>
+            <div class="wrap">
+                <div class="dl">
+                    <div>
+                        file name : <input type="text" size="10" id="fname" style="border:none">
+                        <input type="button" value="download" onclick="Download()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var map = new Map();
+        var BO_Come = new Map();
+        var TO_Come = new Map();
+        var Shot_Come = new Map();
+
+        map.set("BO_suc_cnter", 0);
+        map.set("BO_fail_cnter", 0);
+        map.set("TO_suc_cnter", 0);
+        map.set("TO_fail_cnter", 0);
+        map.set("Shot_G_cnter", 0);
+        map.set("Shot_On_cnter", 0);
+        map.set("Shot_Off_cnter", 0);
+        map.set("Shot_With_cnter", 0);
+
+
+        function Update()
+        {
+            var id = document.getElementById('BO_cnter');
+            var t = map.get("BO_suc_cnter") + map.get("BO_fail_cnter");
+            id.innerHTML = t;
+            if(t) {
+                id = document.getElementById('BO_result');
+                t = map.get("BO_suc_cnter") / t * 100;
+                t = Math.ceil(t * 10) / 10;
+                t = String(t) + '%';
+                id.innerHTML = t;
+            }
+
+            id = document.getElementById('TO_cnter');
+            t = map.get("TO_suc_cnter") + map.get("TO_fail_cnter");
+            id.innerHTML = t;
+
+            if(t) {
+                id = document.getElementById('TO_result');
+                t = map.get("TO_fail_cnter") / t * 100;
+                t = Math.ceil(t * 10) / 10;
+                t = String(t) + '%';
+                id.innerHTML = t;
+            }
+
+            id = document.getElementById('Shot_cnter');
+            t = map.get("Shot_G_cnter") + map.get("Shot_On_cnter") + map.get("Shot_Off_cnter");
+            id.innerHTML = t;
+
+            if(t) {
+                id = document.getElementById('Shot_result');
+                t = map.get("Shot_Off_cnter") / t * 100;
+                t = Math.ceil(t * 10) / 10;
+                t = String(t) + '%';
+                id.innerHTML = t;
+            }
+            
+            t = map.get("TO_suc_cnter");
+            if(t) {
+                id = document.getElementById('Without_Shot');
+                t = map.get("Shot_With_cnter") / t * 100;
+                t = Math.ceil(t * 10) / 10;
+                t = String(t) + '%';
+                id.innerHTML = t;
+            }
+        }
+
+        function UpClick(id)
+        {
+            let cnter = document.getElementById(id);
+            let cnt = map.get(id);
+            cnt++;
+            cnter.innerHTML = cnt;
+            map.set(id, cnt);
+            Update();
+        }
+
+        function DownClick(id)
+        {
+            let cnter = document.getElementById(id);
+            let cnt = map.get(id);
+            if (cnt > 0) cnt--;
+            cnter.innerHTML = cnt;
+            map.set(id, cnt);
+            Update();
+        }
+
+        function RegisterClick(time, come)
+        {
+            let t = document.getElementById(time);
+            let c = document.getElementById(come);
+            if(t.value=="" || c.value=="") alert("Invalid value!");
+            else {
+                switch (time) {
+                    case "BO_time":
+                        BO_Come.set(t.value, c.value);
+                        console.log(BO_Come.get(t.value));
+                        break;
+                    case "TO_time":
+                        TO_Come.set(t.value, c.value);
+                        break;
+                    case "Shot_time":
+                        Shot_Come.set(t.value, c.value);
+                        break;
+                    default:
+                        alert("error : RegisterClick(time, come)");
+                        break;
+                }
+                alert("success!");
+            }
+            t.value = "";
+            c.value = "";
+        }
+
+        function CreateString()
+        {
+            let BO_T = document.getElementById("BO_cnter");
+            let BO_S = document.getElementById("BO_suc_cnter");
+            let BO_F = document.getElementById("BO_fail_cnter");
+            let BO_R = document.getElementById("BO_result");
+            let s = "----------------------\n";
+            s += "---break out---\n";
+            s += "total : " + String(BO_T.innerHTML) + "\n";
+            s += "success : " + String(BO_S.innerHTML) + "\n";
+            s += "failure : " + String(BO_F.innerHTML) + "\n";
+            s += "accuracy : " + String(BO_R.innerHTML) + "\n";
+            for(var [k, v] of BO_Come) {
+                s += "-----\n";
+                s += k + "\n";
+                s += v + "\n";
+            }
+            s += "-----\n";
+
+            let TO_T = document.getElementById("TO_cnter");
+            let TO_S = document.getElementById("TO_suc_cnter");
+            let TO_F = document.getElementById("TO_fail_cnter");
+            let TO_R = document.getElementById("TO_result");
+            s += "---turn over---\n";
+            s += "total : " + String(TO_T.innerHTML) + "\n";
+            s += "success : " + String(TO_S.innerHTML) + "\n";
+            s += "failure : " + String(TO_F.innerHTML) + "\n";
+            s += "accuracy : " + String(TO_R.innerHTML) + "\n";
+            for(var [k, v] of TO_Come) {
+                s += "-----\n";
+                s += k + "\n";
+                s += v + "\n";
+            }
+            s += "-----\n";
+
+            let Shot_T = document.getElementById("Shot_cnter");
+            let Shot_G = document.getElementById("Shot_G_cnter");
+            let Shot_On = document.getElementById("Shot_On_cnter");
+            let Shot_Off = document.getElementById("Shot_Off_cnter");
+            let Shot_R = document.getElementById("Shot_result");
+            let Shot_W = document.getElementById("Without_Shot");
+            s += "---shot---\n";
+            s += "total : " + String(Shot_T.innerHTML) + "\n";
+            s += "goal : " + String(Shot_G.innerHTML) + "\n";
+            s += "target on : " + String(Shot_On.innerHTML) + "\n";
+            s += "target off : " + String(Shot_Off.innerHTML) + "\n";
+            s += "accuracy : " + String(Shot_R.innerHTML) + "\n";
+            s += "without shot : " + Shot_W.innerHTML + "\n";
+            for(var [k, v] of Shot_Come) {
+                s += "-----\n";
+                s += k + "\n";
+                s += v + "\n";
+            }
+            s += "-----\n";
+
+            return s;
+        }
+
+        function Download()
+        {
+            let fname = document.getElementById("fname");
+            if(fname.value=="") alert("Please input file name!");
+            else {
+                var test = CreateString();
+                test = test.split("");
+                const blob = new Blob(test,{type:"text/plain"});
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                var s = fname.value + ".txt"
+                link.download = s;
+                link.click();
+            }
+            
+            fname.value = "";
+        }
+    </script>
+</body>
+
+</html>
