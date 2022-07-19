@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TOEIC Word Test</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <style>
+        .wrapper {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 960px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .wrap {
+            display: inline-block;
+            text-align: center;
+            width: auto;
+            height: auto;
+        }
+        .type {
+            display: flex;
+            flex-flow: column;
+        }
+        .dl {
+            text-align: left;
+        }
+        .title {
+        font-size: 24px;
+        }
+    </style>
+    <script>
+        var words = [];
+        var example = [];
+        var ans = [];
+        var t = 0;
+
+        words.push("fare");
+        example.push("What’s the round-trip fare to New York?");
+        ans.push("運賃");
+        words.push("delay");
+        example.push("The bus was delayed for an hour by heavy traffic.");
+        ans.push("遅れる，遅延");
+        words.push("destination");
+        example.push("You’d better check the fare to your destination.");
+        ans.push("目的地，行き先");
+
+        function update()
+        {
+            var array = new Uint32Array(10);
+            window.crypto.getRandomValues(array);
+
+            console.log("Your lucky numbers:");
+            for (var i = 0; i < array.length; i++) {
+                console.log(array[i]);
+            }
+
+            t = Math.floor(Math.random() * array.length);
+
+            t = array[t] % words.length;
+
+            var id = document.getElementById('question');
+            id.innerHTML = words[t];
+            id = document.getElementById('question_example');
+            id.innerHTML = example[t];
+        }
+
+        function ClickCheckAnswer()
+        {
+            
+        }
+    </script>
+</head>
+
+<body onload="update();">
+    <div class="wrapper">
+        <h1>TOEIC Word Test</h1>
+        <div class="type">
+            <div>
+                <p class="title">Question</p>
+            </div>
+            <div>
+                <table cellpadding="6">
+                    <tr>
+                        <th>
+                            <p id="question">  </p>
+                        </th>
+                        <th>
+                            <p id="question_example">  </p>
+                        </th>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+        <div class="type">
+            <div>
+                <label for="answer" class="title">Answer</label>
+                <input type="button" value="Check Answer" onclick="ClickCheckAnswer();">
+            </div>
+            <div>
+                <table cellpadding="6">
+                    <tr>
+                        <th>
+                            <p id="ans">  </p>
+                        </th>
+                        <th>
+                            <a id="weblio">  </a>
+                        </th>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function ClickStart()
+        {
+            document.location.href = "WordTest.html";
+        }
+    </script>
+</body>
+
+</html>
